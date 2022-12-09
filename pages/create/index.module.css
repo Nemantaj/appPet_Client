@@ -1,0 +1,125 @@
+.stepDiv {
+  margin-top: 20px;
+  padding: 0 10px;
+}
+
+.step1,
+.step2 {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: start;
+  margin-bottom: 30px;
+}
+
+.imgDiv {
+  width: 300px;
+  height: 300px;
+  position: relative;
+}
+
+.imgDivStep2 {
+  width: 300px;
+  height: 200px;
+  position: relative;
+}
+
+.dogStep1 {
+  margin-top: 30px;
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.inputs {
+  border-bottom: 5px dotted #f1b342;
+}
+
+.inputsError {
+  border-bottom: 5px dotted red;
+}
+
+.inputs1 {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  border-bottom: 5px dotted #f1b342;
+  align-items: center;
+}
+
+.inputs1Error {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  border-bottom: 5px dotted red;
+  align-items: center;
+}
+
+.inputs3 {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 5px dotted #f1b342;
+  align-items: center;
+}
+
+.inputs3Error {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 5px dotted red;
+  align-items: center;
+}
+
+.inputs2 {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  border-bottom: 5px dotted #f1b342;
+}
+
+.inputs2Error {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  border-bottom: 5px dotted red;
+}
+
+@media screen and (max-width: 600px) {
+  .inputs1,
+  .inputs1Error {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+
+
+  /* .inputs3,
+  .inputs3Error {
+    display: flex;
+    flex-direction: column;
+  } */
+
+  .inputs2,
+  .inputs2Error {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.step1Mini {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 5px;
+}

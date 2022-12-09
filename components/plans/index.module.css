@@ -1,0 +1,123 @@
+.plansGrid {
+  width: 100%;
+}
+
+.plansSelect {
+  /* display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  grid-gap: 10px; */
+}
+
+.card {
+  margin-top: 0;
+}
+
+.imgDivCard {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  top: -50px;
+  right: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .imgDivCard {
+    top: -50px;
+  }
+
+  .plansHeader {
+    margin-top: 70px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .imgDivCard {
+    top: -50px;
+    left: 0;
+  }
+
+  .plansHeader {
+    margin-top: 70px;
+  }
+
+  .card {
+    margin-top: 50px;
+  }
+
+  .card2 {
+    margin-top: 100px !important;
+  }
+}
+
+.trial {
+}
+
+.grandTotal {
+  position: sticky;
+  bottom: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+  gap: 20px;
+}
+
+.checkoutBar {
+  width: fit-content;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  background-color: #173b33;
+  padding: 3px;
+  border-radius: 40px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.grandText {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  padding-left: 20px;
+  color: #fff;
+}
+
+.plansHeader {
+  padding: 10px;
+  border-radius: 12px;
+  display: inline-flex;
+  gap: 30px;
+  align-items: center;
+  min-width: 200px;
+}
+
+.plansHeaderSub {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.plansBody {
+  padding: 10px;
+  min-width: 200px;
+}
+
+.noPincode {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.pinButton {
+  display: inline-flex;
+  gap: 5px;
+}
+
+.subTotal {
+  display: inline-flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}

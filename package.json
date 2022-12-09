@@ -1,0 +1,25 @@
+{
+  "name": "kukurku-user",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "https://app-pet-api-6jjd.vercel.app/",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.8.0",
+    "@reduxjs/toolkit": "^1.9.1",
+    "antd": "^5.0.4",
+    "framer-motion": "^7.6.19",
+    "next": "13.0.6",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-progress-stepper": "^0.2.2",
+    "react-redux": "^8.0.5",
+    "react-step-progress-bar": "^1.0.3",
+    "redux": "^4.2.0"
+  }
+}
