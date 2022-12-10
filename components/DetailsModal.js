@@ -7,6 +7,7 @@ import {
   Spin,
   message,
   Modal,
+  Card,
 } from "antd";
 import { Fragment, useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -25,15 +26,11 @@ const DetailsModal = (props) => {
 
   useEffect(() => {
     setLoading(true);
-    fetch(
-      "https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app/plan-details/" +
-        props.detail._id,
-      {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      }
-    )
+    fetch("https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app/plan-details/" + props.detail._id, {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    })
       .then((res) => {
         return res.json();
       })
@@ -68,7 +65,9 @@ const DetailsModal = (props) => {
       onCancel={props.handleCancel}
     >
       <motion.div>
-        <Typography.Title level={3}>{props.detail.name}</Typography.Title>
+        <Typography.Title level={3}>
+          {props.detail.plan.planType}
+        </Typography.Title>
         <Divider style={{ marginTop: 10, marginBottom: 10 }} />
         <div className={styles.orderHeader}>
           <Typography.Text>Expires At</Typography.Text>
@@ -90,7 +89,7 @@ const DetailsModal = (props) => {
             {props.detail.breed.name + " | " + props.detail.breed.size.size}
           </Typography.Text>
         </div>
-        <Divider style={{ marginTop: 10, marginBottom: 10 }} />
+        {/* <Divider style={{ marginTop: 10, marginBottom: 10 }} />
         <div className={styles.orderHeader}>
           <Typography.Text>Gender</Typography.Text>
           <Typography.Text>{props.detail.gender}</Typography.Text>
@@ -99,9 +98,63 @@ const DetailsModal = (props) => {
         <div className={styles.orderHeader}>
           <Typography.Text>Weight</Typography.Text>
           <Typography.Text>{props.detail.weight} KG</Typography.Text>
+        </div> */}
+
+        <Divider style={{ marginTop: 10, marginBottom: 10 }} />
+        <div className={styles.orderHeader}>
+          <Typography.Text>Cost</Typography.Text>
+          <Typography.Text>
+            INR{" "}
+            {props.detail.plan.planType === "Subscription Plan"
+              ? props.detail.breed.size.price.subscription + " / Month"
+              : props.detail.breed.size.price.trial + " / Week"}
+          </Typography.Text>
         </div>
-        <Divider />
-        <Typography.Title level={3}>Payments</Typography.Title>
+        <Divider style={{ marginTop: 10, marginBottom: 10 }} />
+        <Card bordered={false} style={{ backgroundColor: "#F2674B" }}>
+          <Typography.Title level={5} style={{ margin: 0, color: "#fff" }}>
+            Doggo's name is {props.detail.name},
+          </Typography.Title>
+          <Divider
+            style={{ marginTop: 10, marginBottom: 10, backgroundColor: "#fff" }}
+          />
+          <Typography.Title level={5} style={{ margin: 0, color: "#fff" }}>
+            {props.detail.gender === "female" ? "She" : "He"} is{" "}
+            {props.detail.age} {props.detail.ageMetric}s old and weights{" "}
+            {props.detail.weight} Kg.
+          </Typography.Title>
+          {props.detail.medicalCondition !== "" && (
+            <Fragment>
+              <Divider
+                style={{
+                  marginTop: 10,
+                  marginBottom: 10,
+                  backgroundColor: "#fff",
+                }}
+              />
+              <Typography.Title level={5} style={{ margin: 0, color: "#fff" }}>
+                Medical Condition :- &nbsp; {props.detail.medicalCondition},
+              </Typography.Title>
+            </Fragment>
+          )}
+          {props.detail.vet !== "" && (
+            <Fragment>
+              <Divider
+                style={{
+                  marginTop: 10,
+                  marginBottom: 10,
+                  backgroundColor: "#fff",
+                }}
+              />
+              <Typography.Title level={5} style={{ margin: 0, color: "#fff" }}>
+                VET :- &nbsp; {props.detail.vet}.
+              </Typography.Title>
+            </Fragment>
+          )}
+        </Card>
+        <Typography.Title level={3} style={{ marginTop: 50 }}>
+          Payments
+        </Typography.Title>
         {loading ? (
           <Spin />
         ) : (

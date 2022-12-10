@@ -14,9 +14,9 @@ export default function Home() {
 
   useEffect(() => {
     if (isAuth) {
-      if (isAuth) {
-        router.push("/home");
-      }
+      router.push("/home");
+    } else {
+      router.push("/create");
     }
   }, [isAuth]);
 
@@ -28,18 +28,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>
-        <Link href="/create" legacyBehavior>
-          <Button
-            type="primary"
-            style={{ backgroundColor: "#f2674b" }}
-            icon={<PlusOutlined />}
-            shape="round"
-          >
-            Create a plan
-          </Button>
-        </Link>
-      </div>
+      <div></div>
     </div>
   );
 }

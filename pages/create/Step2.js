@@ -84,7 +84,7 @@ const Step2 = (props) => {
       <Typography.Text style={{ fontFamily: "monst" }} italic>
         Time to tell us about Dog (the best part!) This will only take ~2 mins.
       </Typography.Text>
-      <motion.div className={`${styles.dogStep1} ${styles.wrap}`}>
+      <motion.div className={`${styles.dogStep2} ${styles.wrap}`}>
         <Typography.Text style={{ fontSize: "20px", marginBottom: 5 }}>
           Your dog name is:-
         </Typography.Text>
@@ -110,7 +110,7 @@ const Step2 = (props) => {
 
       {nameValid && (
         <motion.div
-          className={`${styles.dogStep1} ${styles.wrap}`}
+          className={`${styles.dogStep2} ${styles.wrap}`}
           initial={{ scale: 0.7, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
         >
@@ -135,7 +135,7 @@ const Step2 = (props) => {
               placeholder="age"
               size="large"
               style={{
-                width: 65,
+                width: 100,
                 fontSize: "20px",
                 margin: 0,
                 padding: 5,
@@ -148,6 +148,7 @@ const Step2 = (props) => {
               onBlur={ageBlur}
             />
           </div>
+          <br />
           <div className={metric === "" ? styles.inputsError : styles.inputs}>
             <Select
               value={metric}
@@ -169,33 +170,44 @@ const Step2 = (props) => {
       )}
 
       {nameValid && ageValid && (
-        <motion.div
-          className={styles.dogStep1}
-          initial={{ scale: 0.7, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-        >
-          <div className={weightError ? styles.inputs3Error : styles.inputs3}>
-            <Typography.Text style={{ fontSize: "20px" }}>
-              Weight
-            </Typography.Text>
-            <Input
-              placeholder="weight"
-              size="large"
-              style={{
-                fontSize: "20px",
-                margin: 0,
-                padding: 5,
-                textAlign: "center",
-                width: "100px",
-              }}
-              type="number"
-              bordered={false}
-              value={weightValue}
-              onChange={weightHandler}
-              onBlur={weightBlur}
-            />
-          </div>
-        </motion.div>
+        <Fragment>
+          <motion.div
+            className={styles.dogStep1}
+            initial={{ scale: 0.7, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+          >
+            <Typography.Title style={{ fontSize: "20px", margin: 0 }}>
+              and Your Doggo's
+            </Typography.Title>
+          </motion.div>
+          <motion.div
+            className={styles.dogStep1}
+            initial={{ scale: 0.7, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+          >
+            <div className={weightError ? styles.inputs3Error : styles.inputs3}>
+              <Typography.Text style={{ fontSize: "20px" }}>
+                Weight :-
+              </Typography.Text>
+              <Input
+                placeholder="weight"
+                size="large"
+                style={{
+                  fontSize: "20px",
+                  margin: 0,
+                  padding: 5,
+                  textAlign: "center",
+                  width: "100px",
+                }}
+                type="number"
+                bordered={false}
+                value={weightValue}
+                onChange={weightHandler}
+                onBlur={weightBlur}
+              />
+            </div>
+          </motion.div>
+        </Fragment>
       )}
       {nameValid && ageValid && weightValid && (
         <motion.div
@@ -205,7 +217,7 @@ const Step2 = (props) => {
         >
           <div className={breed === "" ? styles.inputs3Error : styles.inputs3}>
             <Typography.Text style={{ fontSize: "20px" }}>
-              Breed
+              Breed :-
             </Typography.Text>
             <Select
               defaultValue="breed"
@@ -219,7 +231,7 @@ const Step2 = (props) => {
               size="large"
               value={breed}
               onChange={(value) => setBreed(value)}
-              style={{minWidth: "150px"}}
+              style={{ minWidth: "150px" }}
             ></Select>
           </div>
         </motion.div>
@@ -239,7 +251,7 @@ const Step2 = (props) => {
               }
             >
               <Typography.Text style={{ fontSize: "20px" }}>
-                Condition
+                Medical Condition :-
               </Typography.Text>{" "}
               <Select
                 defaultValue="condition"
@@ -253,7 +265,7 @@ const Step2 = (props) => {
                 size="large"
                 value={condition}
                 onChange={(value) => setCondition(value)}
-                style={{minWidth: "150px"}}
+                style={{ minWidth: "150px" }}
               ></Select>
             </div>
           </motion.div>
@@ -269,7 +281,7 @@ const Step2 = (props) => {
           >
             <div className={vetError ? styles.inputs3Error : styles.inputs3}>
               <Typography.Text style={{ fontSize: "20px" }}>
-                VET
+                Doggo's VET :-
               </Typography.Text>{" "}
               <Input
                 placeholder="Vet"

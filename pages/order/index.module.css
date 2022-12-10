@@ -1,0 +1,12 @@
+.alignItems{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgDiv {
+  width: 250px;
+  height: 250px;
+  position: relative;
+}

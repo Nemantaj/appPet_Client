@@ -51,7 +51,7 @@ const Step3 = (props) => {
     blurHandler: pincodeBlur,
     clearInput: pincodeClear,
     setInput: setPincode,
-  } = useInput((value) => value.length > 5, 0);
+  } = useInput((value) => value.length > 5, "");
 
   const {
     inputValue: addressValue,
@@ -71,7 +71,7 @@ const Step3 = (props) => {
     blurHandler: mobileBlur,
     clearInput: mobileClear,
     setInput: setMobile,
-  } = useInput((value) => value.length >= 10, "");
+  } = useInput((value) => value.length === 10, "");
 
   useEffect(() => {
     if (Object.keys(plans).length > 0 && plans.hasOwnProperty("user")) {
@@ -96,12 +96,12 @@ const Step3 = (props) => {
         Tell us about yourself.
       </Typography.Title>
       <motion.div className={styles.dogStep1}>
+        <Typography.Text
+          style={{ fontSize: "15px", marginBottom: 5, fontWeight: "bold" }}
+        >
+          Name :-
+        </Typography.Text>
         <div className={nameError ? styles.inputs1Error : styles.inputs1}>
-          <Typography.Text
-            style={{ fontSize: "15px", marginBottom: 5, fontWeight: "bold" }}
-          >
-            Your Name
-          </Typography.Text>
           <Input
             placeholder="name"
             size="large"
@@ -110,7 +110,7 @@ const Step3 = (props) => {
               margin: 0,
               padding: 5,
               textAlign: "center",
-              maxWidth: "200px",
+              maxWidth: "100%",
             }}
             type="text"
             bordered={false}
@@ -126,12 +126,12 @@ const Step3 = (props) => {
           initial={{ scale: 0.7, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
         >
+          <Typography.Text
+            style={{ fontSize: "15px", marginBottom: 5, fontWeight: "bold" }}
+          >
+            Email :-
+          </Typography.Text>
           <div className={emailError ? styles.inputs1Error : styles.inputs1}>
-            <Typography.Text
-              style={{ fontSize: "15px", marginBottom: 5, fontWeight: "bold" }}
-            >
-              Your Email
-            </Typography.Text>
             <Input
               placeholder="email"
               size="large"
@@ -140,7 +140,7 @@ const Step3 = (props) => {
                 margin: 0,
                 padding: 5,
                 textAlign: "center",
-                maxWidth: "200px",
+                maxWidth: "100%",
               }}
               type="text"
               bordered={false}
@@ -157,12 +157,12 @@ const Step3 = (props) => {
           initial={{ scale: 0.7, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
         >
+          <Typography.Text
+            style={{ fontSize: "15px", marginBottom: 5, fontWeight: "bold" }}
+          >
+            Pincode :-
+          </Typography.Text>
           <div className={pincodeError ? styles.inputs1Error : styles.inputs1}>
-            <Typography.Text
-              style={{ fontSize: "15px", marginBottom: 5, fontWeight: "bold" }}
-            >
-              Your Pincode
-            </Typography.Text>
             <Input
               placeholder="pincode"
               size="large"
@@ -171,7 +171,7 @@ const Step3 = (props) => {
                 margin: 0,
                 padding: 5,
                 textAlign: "center",
-                maxWidth: "200px",
+                maxWidth: "100%",
               }}
               type="number"
               bordered={false}
@@ -188,12 +188,12 @@ const Step3 = (props) => {
           initial={{ scale: 0.7, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
         >
+          <Typography.Text
+            style={{ fontSize: "15px", marginBottom: 5, fontWeight: "bold" }}
+          >
+            Number :-
+          </Typography.Text>
           <div className={mobileError ? styles.inputs1Error : styles.inputs1}>
-            <Typography.Text
-              style={{ fontSize: "15px", marginBottom: 5, fontWeight: "bold" }}
-            >
-              Your Number
-            </Typography.Text>
             <Input
               placeholder="number"
               size="large"
@@ -202,7 +202,7 @@ const Step3 = (props) => {
                 margin: 0,
                 padding: 5,
                 textAlign: "center",
-                maxWidth: "200px",
+                maxWidth: "100%",
               }}
               type="number"
               bordered={false}
@@ -219,12 +219,13 @@ const Step3 = (props) => {
           initial={{ scale: 0.7, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
         >
+          {" "}
+          <Typography.Text
+            style={{ fontSize: "15px", marginBottom: 5, fontWeight: "bold" }}
+          >
+            Address :-
+          </Typography.Text>
           <div className={addressError ? styles.inputs2Error : styles.inputs2}>
-            <Typography.Text
-              style={{ fontSize: "15px", marginBottom: 5, fontWeight: "bold" }}
-            >
-              Your Address
-            </Typography.Text>
             <Input
               placeholder="address"
               size="large"
@@ -233,7 +234,7 @@ const Step3 = (props) => {
                 margin: 0,
                 padding: 5,
                 textAlign: "center",
-                maxWidth: "300px",
+                maxWidth: "100%",
               }}
               type="text"
               bordered={false}
@@ -278,12 +279,11 @@ const Step3 = (props) => {
               console.log("Checking pincode validity");
               props.createPlan({
                 name: nameValue,
-                email: emailValue,
+                email: emailValue.toLowerCase(),
                 address: addressValue,
                 mobile: mobileValue,
                 pincode: pincodeValue,
               });
-              dispatch(planActions.setStep(100));
             }}
           >
             {props.loading ? <Spin /> : "Continue"}

@@ -1,6 +1,6 @@
 import styles from "./index.module.css";
 import { motion } from "framer-motion";
-import { Button, Divider, Typography, message } from "antd";
+import { Button, Divider, Typography, message, Spin } from "antd";
 import PlansCard from "./PlansCard";
 import Billing from "./Billing";
 import { Fragment, useEffect, useState } from "react";
@@ -29,24 +29,21 @@ const ChoosePlans = (props) => {
     const coupons = bill.coupons.map((doc) => {
       return { code: doc.code, discount: doc.amount };
     });
-    fetch(
-      "https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app/create-order",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          amount: total,
-          email: plans.user.email,
-          petId: props.pet._id,
-          plan: bill.plan.name,
-          planPrice: bill.plan.price,
-          coupons,
-          note: "Initial Plan",
-        }),
-      }
-    )
+    fetch("https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app/create-order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        amount: total,
+        email: plans.user.email,
+        petId: props.pet._id,
+        plan: bill.plan.name,
+        planPrice: bill.plan.price,
+        coupons,
+        note: "Initial Plan",
+      }),
+    })
       .then((res) => {
         return res.json();
       })
@@ -62,45 +59,55 @@ const ChoosePlans = (props) => {
 
         setOrderData(data.order);
         const cf = new Cashfree(data.order.payment_session_id);
-        dispatch(planActions.setPlans({}));
-
+        dispatch(planActions.setPlans({ ...plans, dog: [] }));
+        localStorage.setItem("usersEmail", plans.user.email);
+        localStorage.setItem("usersName", plans.user.name);
+        localStorage.setItem("usersPin", plans.user.pincode);
+        localStorage.setItem("usersAdd", plans.user.address);
+        localStorage.setItem("usersMobile", plans.user.mobile);
         cf.redirect();
       });
   };
 
   return (
-    <motion.div>
-      <Typography.Title level={1} style={{ marginTop: "100px" }}>
-        Here's a plan for your dog.
-      </Typography.Title>
-      <Divider />
-      <motion.div className={styles.plansGrid}>
-        <PlansCard
-          plans={props.plan}
-          bill={bill}
-          setBill={setBill}
-          plan={plan}
-          setPlan={setPlan}
-        />
-      </motion.div>
-      {Object.keys(bill.plan).length > 0 && (
-        <Fragment>
-          <Typography.Title level={1} style={{ marginTop: "60px" }}>
-            SubTotal
+    <Fragment>
+      {props.loading ? (
+        <Spin />
+      ) : (
+        <motion.div>
+          <Typography.Title level={1} style={{ marginTop: "100px" }}>
+            Here's a plan for your dog.
           </Typography.Title>
           <Divider />
-          <Billing
-            plan={plan}
-            plans={props.plan}
-            bill={bill}
-            setBill={setBill}
-            pay={payBills}
-            loading={loading}
-          />
-        </Fragment>
+          <motion.div className={styles.plansGrid}>
+            <PlansCard
+              plans={props.plan}
+              bill={bill}
+              setBill={setBill}
+              plan={plan}
+              setPlan={setPlan}
+            />
+          </motion.div>
+          {Object.keys(bill.plan).length > 0 && (
+            <Fragment>
+              <Typography.Title level={1} style={{ marginTop: "60px" }}>
+                SubTotal
+              </Typography.Title>
+              <Divider />
+              <Billing
+                plan={plan}
+                plans={props.plan}
+                bill={bill}
+                setBill={setBill}
+                pay={payBills}
+                loading={loading}
+              />
+            </Fragment>
+          )}
+          {contextHolder}
+        </motion.div>
       )}
-      {contextHolder}
-    </motion.div>
+    </Fragment>
   );
 };
 

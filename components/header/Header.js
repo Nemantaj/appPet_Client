@@ -123,6 +123,14 @@ const Headers = () => {
             transition={{ duration: 1, type: "spring" }}
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
+            whileHover={{scale: 1.2}}
+            onClick={() => {
+              if (router.pathname === "/create") {
+                return;
+              } else {
+                router.push("/create");
+              }
+            }}
           >
             <img src="https://kukur.co/images/logo/123.png" />
           </motion.div>
@@ -144,6 +152,13 @@ const Headers = () => {
                 }}
                 trigger={["click"]}
                 icon={<DownOutlined />}
+                onClick={() => {
+                  if (router.pathname === "/home") {
+                    return;
+                  } else {
+                    router.push("/home");
+                  }
+                }}
               >
                 {username}
               </Dropdown.Button>

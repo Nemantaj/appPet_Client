@@ -26,6 +26,15 @@
   position: relative;
 }
 
+.dogStep2 {
+  margin-top: 30px;
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .dogStep1 {
   margin-top: 30px;
   display: inline-flex;
@@ -76,14 +85,14 @@
 .inputs2 {
   display: block;
   width: 100%;
-  max-width: 400px;
+  max-width: 300px;
   border-bottom: 5px dotted #f1b342;
 }
 
 .inputs2Error {
   display: block;
   width: 100%;
-  max-width: 400px;
+  max-width: 300px;
   border-bottom: 5px dotted red;
 }
 
@@ -94,6 +103,11 @@
     flex-direction: column;
     width: 100%;
     max-width: 300px;
+  }
+
+  .dogStep1 {
+    display: flex;
+    flex-direction: column;
   }
 
 

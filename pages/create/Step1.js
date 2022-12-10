@@ -12,7 +12,7 @@ import { planActions } from "../../store/slices/stepSlice";
 
 const Step1 = (props) => {
   return (
-    <motion.div className={styles.step1}>
+    <motion.div className={styles.step1} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <div className={styles.imgDiv}>
         <Image src={img1} layout="fill" objectFit="contain" />
       </div>
