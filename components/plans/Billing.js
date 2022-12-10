@@ -54,7 +54,7 @@ const Billing = (props) => {
 
   const addPromo = () => {
     setLoading(true);
-    fetch("https://app-pet-api-6jjd.vercel.app//promo/" + nameValue)
+    fetch("https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app/promo/" + nameValue)
       .then((res) => {
         return res.json();
       })

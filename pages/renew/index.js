@@ -20,7 +20,7 @@ const Order = () => {
     if (order_id !== undefined) {
       setLoading(true);
       setError(false);
-      fetch("https://app-pet-api-6jjd.vercel.app//confirm-renew/" + router.query.order_id)
+      fetch("https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app/confirm-renew/" + router.query.order_id)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

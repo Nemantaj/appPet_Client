@@ -40,7 +40,7 @@ const Create = () => {
   }, [plans]);
 
   const loadBreeds = () => {
-    fetch("https://app-pet-api-6jjd.vercel.app//get-breeds")
+    fetch("https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app/get-breeds")
       .then((res) => {
         return res.json();
       })
@@ -59,7 +59,7 @@ const Create = () => {
   const createPlan = (user) => {
     setLoading(true);
     console.log(plans);
-    fetch("https://app-pet-api-6jjd.vercel.app//create-plan", {
+    fetch("https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app/create-plan", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

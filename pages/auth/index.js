@@ -55,7 +55,7 @@ const Auth = () => {
 
   const auth = () => {
     setLoading(true);
-    fetch("https://app-pet-api-6jjd.vercel.app//login", {
+    fetch("https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

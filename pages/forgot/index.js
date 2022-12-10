@@ -64,7 +64,7 @@ const Forgot = (props) => {
 
   const getCodes = () => {
     setLoading(true);
-    fetch("https://app-pet-api-6jjd.vercel.app//get-codes/" + emailValue)
+    fetch("https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app/get-codes/" + emailValue)
       .then((res) => {
         return res.json();
       })
@@ -98,7 +98,7 @@ const Forgot = (props) => {
 
   const validateCodes = () => {
     setLoading(true);
-    fetch("https://app-pet-api-6jjd.vercel.app//validate-codes", {
+    fetch("https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app/validate-codes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -140,7 +140,7 @@ const Forgot = (props) => {
 
   const reset = () => {
     setLoading(true);
-    fetch("https://app-pet-api-6jjd.vercel.app//change-password", {
+    fetch("https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app/change-password", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

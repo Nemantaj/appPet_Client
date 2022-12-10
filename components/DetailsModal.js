@@ -25,11 +25,15 @@ const DetailsModal = (props) => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://app-pet-api-6jjd.vercel.app//plan-details/" + props.detail._id, {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    })
+    fetch(
+      "https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app/plan-details/" +
+        props.detail._id,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    )
       .then((res) => {
         return res.json();
       })
@@ -98,7 +102,10 @@ const DetailsModal = (props) => {
         </div>
         <Divider />
         <Typography.Title level={3}>Payments</Typography.Title>
-        {orders.length > 0 &&
+        {loading ? (
+          <Spin />
+        ) : (
+          orders.length > 0 &&
           orders.map((doc) => {
             return (
               <Fragment>
@@ -116,12 +123,13 @@ const DetailsModal = (props) => {
                 <div className={styles.orderHeader}>
                   <Typography.Text>Payment</Typography.Text>
                   <Typography.Text>
-                   INR {doc.orderDetails.order_amount}
+                    INR {doc.orderDetails.order_amount}
                   </Typography.Text>
                 </div>
               </Fragment>
             );
-          })}
+          })
+        )}
       </motion.div>
       {contextHolder}
     </Modal>

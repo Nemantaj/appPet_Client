@@ -63,11 +63,15 @@ const Home = () => {
 
   const loadTours = () => {
     setLoading(true);
-    fetch("https://app-pet-api-6jjd.vercel.app//get-orders/" + userId, {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    })
+    fetch(
+      "https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app/get-orders/" +
+        userId,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    )
       .then((res) => {
         return res.json();
       })
@@ -94,11 +98,14 @@ const Home = () => {
   };
 
   const loadUserData = () => {
-    fetch("https://app-pet-api-6jjd.vercel.app//user/" + userId, {
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    })
+    fetch(
+      "https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app/user/" + userId,
+      {
+        headers: {
+          Authorization: "Bearer " + token,
+        },
+      }
+    )
       .then((res) => {
         return res.json();
       })
@@ -193,6 +200,9 @@ const Home = () => {
                         type="primary"
                         style={{ backgroundColor: "#173B33" }}
                         shape="round"
+                        disabled={
+                          doc.breed.size.hasOwnProperty("price") ? false : true
+                        }
                         onClick={() => {
                           setBill({
                             coupons: [],

@@ -2,7 +2,7 @@
   "name": "kukurku-user",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://app-pet-api-6jjd.vercel.app/",
+  "proxy": "https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

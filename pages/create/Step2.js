@@ -17,8 +17,8 @@ const MButton = motion(Button);
 const Step2 = (props) => {
   const [gender, setGender] = useState("female");
   const [metric, setMetric] = useState("year");
-  const [breed, setBreed] = useState("select");
-  const [condition, setCondition] = useState("select");
+  const [breed, setBreed] = useState("");
+  const [condition, setCondition] = useState("");
   const plans = useSelector((state) => state.plan.plans);
 
   useEffect(() => {
@@ -219,6 +219,7 @@ const Step2 = (props) => {
               size="large"
               value={breed}
               onChange={(value) => setBreed(value)}
+              style={{minWidth: "150px"}}
             ></Select>
           </div>
         </motion.div>
@@ -252,6 +253,7 @@ const Step2 = (props) => {
                 size="large"
                 value={condition}
                 onChange={(value) => setCondition(value)}
+                style={{minWidth: "150px"}}
               ></Select>
             </div>
           </motion.div>
@@ -279,7 +281,6 @@ const Step2 = (props) => {
                   textAlign: "center",
                   width: "100px",
                 }}
-               
                 bordered={false}
                 value={vetValue}
                 onChange={vetHandler}
@@ -293,7 +294,7 @@ const Step2 = (props) => {
         metric !== "" &&
         gender !== "" &&
         weightValid &&
-        (breed !== "" || breed !== "select") && (
+        breed !== "" && (
           <MButton
             type="primary"
             style={{

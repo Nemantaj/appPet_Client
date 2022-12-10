@@ -29,21 +29,24 @@ const ChoosePlans = (props) => {
     const coupons = bill.coupons.map((doc) => {
       return { code: doc.code, discount: doc.amount };
     });
-    fetch("https://app-pet-api-6jjd.vercel.app//create-order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        amount: total,
-        email: plans.user.email,
-        petId: props.pet._id,
-        plan: bill.plan.name,
-        planPrice: bill.plan.price,
-        coupons,
-        note: "Initial Plan",
-      }),
-    })
+    fetch(
+      "https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app/create-order",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          amount: total,
+          email: plans.user.email,
+          petId: props.pet._id,
+          plan: bill.plan.name,
+          planPrice: bill.plan.price,
+          coupons,
+          note: "Initial Plan",
+        }),
+      }
+    )
       .then((res) => {
         return res.json();
       })
@@ -60,7 +63,7 @@ const ChoosePlans = (props) => {
         setOrderData(data.order);
         const cf = new Cashfree(data.order.payment_session_id);
         dispatch(planActions.setPlans({}));
-        dispatch(planActions.setStep(0));
+
         cf.redirect();
       });
   };

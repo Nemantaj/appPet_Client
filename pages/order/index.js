@@ -4,6 +4,8 @@ import { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styles from "./index.module.css";
 import Link from "next/link";
+import { dispatch } from "../../store";
+import { planActions } from "../../store/slices/stepSlice";
 
 const Order = () => {
   const [loading, setLoading] = useState(false);
@@ -20,7 +22,10 @@ const Order = () => {
     if (order_id !== undefined) {
       setLoading(true);
       setError(false);
-      fetch("https://app-pet-api-6jjd.vercel.app//get-status/" + router.query.order_id)
+      fetch(
+        "https://app-pet-api-6jjd-fhyky08wd-nemantaj.vercel.app/get-status/" +
+          router.query.order_id
+      )
         .then((res) => res.json())
         .then((data) => {
           console.log(data);
@@ -34,6 +39,10 @@ const Order = () => {
         });
     }
   }, [router.query]);
+
+  useEffect(() => {
+    dispatch(planActions.setStep(0));
+  }, []);
 
   return (
     <motion.div>
